@@ -22,6 +22,12 @@ class _NavScreenState extends State<NavScreen> {
     Icons.add
   ];
 
+  final List<String> _menus = [
+    "로또 번호 뽑기",
+    "로또 정보 보기",
+    "나의 로또 번호"
+  ];
+
   int _selectedIndex = 0;
 
   @override
@@ -37,6 +43,7 @@ class _NavScreenState extends State<NavScreen> {
           padding: const EdgeInsets.only(bottom: 12),
           child: CustomTabBar(
               icons: _icons,
+              menus: _menus,
               selectedIndex: _selectedIndex,
               onTap: (index) => setState(() => _selectedIndex = index)),
         ),

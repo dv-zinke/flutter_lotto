@@ -32,6 +32,9 @@ class CustomTabBar extends StatelessWidget {
                       color: i == selectedIndex ? Colors.black : Colors.black45,
                       size: 24,
                     ),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Text(
                       menus[i],
                       style: TextStyle(

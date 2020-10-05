@@ -3,6 +3,7 @@ import 'package:lotto_flutter/screens/lotto_game_screen.dart';
 import 'package:lotto_flutter/screens/lotto_info_screen.dart';
 import 'package:lotto_flutter/screens/my_lotto_screen.dart';
 import 'package:lotto_flutter/widgets/widgets.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class NavScreen extends StatefulWidget {
   @override
@@ -17,9 +18,9 @@ class _NavScreenState extends State<NavScreen> {
   ];
 
   final List<IconData> _icons = [
-    Icons.add,
-    Icons.add,
-    Icons.add
+    MdiIcons.pig,
+    MdiIcons.newspaper,
+    Icons.account_circle
   ];
 
   final List<String> _menus = [

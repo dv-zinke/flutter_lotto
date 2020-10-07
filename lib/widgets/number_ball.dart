@@ -25,7 +25,7 @@ class NumberBall extends StatelessWidget {
           child: Text(
         number.toString(),
         style: TextStyle(
-          fontSize: 20,
+          fontSize: 18,
           color: Colors.white,
           shadows: [
             Shadow(
@@ -44,11 +44,11 @@ Color getNumberBallColor(int number) {
   Color getNumber;
   if (number < 11) {
     getNumber = Lotto.numColor1;
-  } else if (number < 20) {
+  } else if (number < 21) {
     getNumber = Lotto.numColor2;
-  } else if (number < 30) {
+  } else if (number < 31) {
     getNumber = Lotto.numColor3;
-  } else if (number < 40) {
+  } else if (number < 41) {
     getNumber = Lotto.numColor4;
   } else if (number < 46) {
     getNumber = Lotto.numColor5;

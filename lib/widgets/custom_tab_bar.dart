@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lotto_flutter/config/lotto.dart';
 
 class CustomTabBar extends StatelessWidget {
   final List<IconData> icons;
@@ -19,7 +20,7 @@ class CustomTabBar extends StatelessWidget {
     return TabBar(
       indicatorPadding: EdgeInsets.zero,
       indicator: BoxDecoration(
-          border: Border(top: BorderSide(color: Colors.black, width: 3))),
+          border: Border(top: BorderSide(color: Lotto.mainColor, width: 3))),
       tabs: icons
           .asMap()
           .map((i, e) => MapEntry(
@@ -29,7 +30,7 @@ class CustomTabBar extends StatelessWidget {
                   children: [
                     Icon(
                       e,
-                      color: i == selectedIndex ? Colors.black : Colors.black45,
+                      color: i == selectedIndex ? Lotto.mainColor : Colors.black45,
                       size: 24,
                     ),
                     SizedBox(
@@ -39,7 +40,7 @@ class CustomTabBar extends StatelessWidget {
                       menus[i],
                       style: TextStyle(
                         fontSize: 12,
-                        color: i == selectedIndex ? Colors.black : Colors.black45,
+                        color: i == selectedIndex ? Lotto.mainColor : Colors.black45,
                       ),
                     ),
                   ],

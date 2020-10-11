@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lotto_flutter/screens/lotto_game_screen.dart';
 import 'package:lotto_flutter/screens/lotto_info_screen.dart';
 import 'package:lotto_flutter/screens/my_lotto_screen.dart';
-import 'package:lotto_flutter/widgets/widgets.dart';
+import 'package:lotto_flutter/widgets/custom_tab_bar.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class NavScreen extends StatefulWidget {

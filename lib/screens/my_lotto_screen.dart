@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lotto_flutter/config/lotto.dart';
 import 'package:lotto_flutter/widgets/lotto_number_set.dart';
-import 'package:lotto_flutter/widgets/number_ball.dart';
+import 'package:lotto_flutter/widgets/widgets.dart';
 
 class MyLottoScreen extends StatelessWidget {
   @override
@@ -23,7 +23,9 @@ class MyLottoScreen extends StatelessWidget {
           floating: true,
         ),
         SliverToBoxAdapter(
-          child: LottoNumberSet(lottoNumbers: [1,11,21,31,41,45],),
+          child: LottoNumberSet(
+            lottoNumbers: [1, 11, 21, 31, 41, 45],
+          ),
         )
       ],
     );

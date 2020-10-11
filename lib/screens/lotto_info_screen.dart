@@ -5,6 +5,6 @@ class LottoInfoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(child: Text("lotto info screen")),
-    );;
+    );
   }
 }

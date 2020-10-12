@@ -27,7 +27,7 @@ class LottoGameScreen extends StatelessWidget {
             mainAxisSpacing: 10,
             crossAxisCount: 2,
             children: [
-              Text('game 1'),
+              Text('랜덤 번호 뽑기'),
               Text('game 2'),
               Text('game 3'),
               Text('game 4'),

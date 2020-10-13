@@ -16,17 +16,21 @@ class LottoNumberSet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
-      NumberBall(number: lottoNumbers[0],),
-      NumberBall(number: lottoNumbers[1],),
-      NumberBall(number: lottoNumbers[2],),
-      NumberBall(number: lottoNumbers[3],),
-      NumberBall(number: lottoNumbers[4],),
-      NumberBall(number: lottoNumbers[5],),
-      bonusNumber == null ?  Container() : Icon(Icons.add),
-      bonusNumber == null ?  Container() : NumberBall(number: lottoNumbers[5],),
+    return Container(
+      child: Center(
+        child: Row(children: [
+          NumberBall(number: lottoNumbers[0],),
+          NumberBall(number: lottoNumbers[1],),
+          NumberBall(number: lottoNumbers[2],),
+          NumberBall(number: lottoNumbers[3],),
+          NumberBall(number: lottoNumbers[4],),
+          NumberBall(number: lottoNumbers[5],),
+          bonusNumber == null ?  Container() : Icon(Icons.add),
+          bonusNumber == null ?  Container() : NumberBall(number: lottoNumbers[5],),
 
-    ],);
+        ],),
+      ),
+    );
   }
 }
 

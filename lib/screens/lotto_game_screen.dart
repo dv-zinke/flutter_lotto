@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lotto_flutter/config/lotto.dart';
+import 'package:lotto_flutter/screens/multi_number_lotto.dart';
 
 class LottoGameScreen extends StatelessWidget {
   @override
@@ -27,7 +28,12 @@ class LottoGameScreen extends StatelessWidget {
             mainAxisSpacing: 10,
             crossAxisCount: 2,
             children: [
-              Text('랜덤 번호 뽑기'),
+              RaisedButton(
+                child: Text('연속 번호 뽑기'),
+                onPressed: () {
+                  Navigator.of(context).push(_createRoute());
+                },
+              ),
               Text('game 2'),
               Text('game 3'),
               Text('game 4'),
@@ -37,4 +43,13 @@ class LottoGameScreen extends StatelessWidget {
           ))
     ]));
   }
+}
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => MultiNumberLotto(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      return child;
+    },
+  );
 }

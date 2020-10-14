@@ -23,8 +23,18 @@ class MyLottoScreen extends StatelessWidget {
           floating: true,
         ),
         SliverToBoxAdapter(
-          child: LottoNumberSet(
-            lottoNumbers: [1, 11, 21, 31, 41, 45],
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                SizedBox(width: 20,),
+                LottoNumberSet(
+                  lottoNumbers: [1, 11, 21, 31, 41, 45],
+                ),
+                SizedBox(width: 10,),
+                Icon(Icons.delete_forever, size: 40,)
+              ],
+            ),
           ),
         )
       ],

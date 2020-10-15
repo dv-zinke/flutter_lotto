@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:lotto_flutter/config/lotto.dart';
+import 'package:lotto_flutter/database/DBHelper.dart';
+import 'package:lotto_flutter/model/LottoData.dart';
 import 'package:lotto_flutter/widgets/lotto_number_set.dart';
-import 'package:lotto_flutter/widgets/widgets.dart';
 
-class MyLottoScreen extends StatelessWidget {
+class MyLottoScreen extends StatefulWidget {
+  @override
+  _MyLottoScreenState createState() => _MyLottoScreenState();
+}
+
+class _MyLottoScreenState extends State<MyLottoScreen> {
+
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -22,21 +29,34 @@ class MyLottoScreen extends StatelessWidget {
           centerTitle: false,
           floating: true,
         ),
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                SizedBox(width: 20,),
-                LottoNumberSet(
-                  lottoNumbers: [1, 11, 21, 31, 41, 45],
+        FutureBuilder(
+          future: DBHelper.getLottoDates(),
+          builder:
+              (BuildContext context, AsyncSnapshot<List<LottoData>> snapshot) {
+            if (snapshot.hasData) {
+              return SliverList(
+                  delegate: SliverChildBuilderDelegate((context, index) {
+                var item = snapshot.data[index];
+                return LottoNumberSet(
+                  lottoNumbers: [
+                    item.lottoNumber1,
+                    item.lottoNumber2,
+                    item.lottoNumber3,
+                    item.lottoNumber4,
+                    item.lottoNumber5,
+                    item.lottoNumber6
+                  ],
+                );
+              }, childCount: snapshot.data.length));
+            } else {
+              return SliverToBoxAdapter(
+                child: Center(
+                  child: CircularProgressIndicator(),
                 ),
-                SizedBox(width: 10,),
-                Icon(Icons.delete_forever, size: 40,)
-              ],
-            ),
-          ),
-        )
+              );
+            }
+          },
+        ),
       ],
     );
   }

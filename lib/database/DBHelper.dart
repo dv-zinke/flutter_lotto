@@ -52,7 +52,7 @@ class DBHelper {
 
     // 데이터베이스에서 Dog를 삭제합니다.
     await db.delete(
-      'lottos',
+      'lotto',
       // 특정 dog를 제거하기 위해 `where` 절을 사용하세요
       where: "id = ?",
       // Dog의 id를 where의 인자로 넘겨 SQL injection을 방지합니다.

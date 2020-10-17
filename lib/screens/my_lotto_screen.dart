@@ -12,9 +12,23 @@ class MyLottoScreen extends StatefulWidget {
 class _MyLottoScreenState extends State<MyLottoScreen> {
 
   @override
+  void initState() {
+    // TODO: implement initState
+    allLottoData = getAllLottoData();
+    super.initState();
+  }
+
+  Future<List<LottoData>> allLottoData;
+
+
+  Future<List<LottoData>> getAllLottoData() {
+    print("A");
+    return DBHelper.getLottoDates();
+  }
+  @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
+    return NestedScrollView(
+      headerSliverBuilder: (context, innerBoxScrolled) => [
         SliverAppBar(
           brightness: Brightness.light,
           backgroundColor: Lotto.mainColor,
@@ -29,35 +43,44 @@ class _MyLottoScreenState extends State<MyLottoScreen> {
           centerTitle: false,
           floating: true,
         ),
-        FutureBuilder(
-          future: DBHelper.getLottoDates(),
-          builder:
-              (BuildContext context, AsyncSnapshot<List<LottoData>> snapshot) {
-            if (snapshot.hasData) {
-              return SliverList(
-                  delegate: SliverChildBuilderDelegate((context, index) {
-                var item = snapshot.data[index];
-                return LottoNumberSet(
-                  lottoNumbers: [
-                    item.lottoNumber1,
-                    item.lottoNumber2,
-                    item.lottoNumber3,
-                    item.lottoNumber4,
-                    item.lottoNumber5,
-                    item.lottoNumber6
-                  ],
-                );
-              }, childCount: snapshot.data.length));
-            } else {
-              return SliverToBoxAdapter(
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              );
-            }
-          },
-        ),
       ],
+      body: FutureBuilder(
+        future: allLottoData,
+        builder:
+            (BuildContext context, AsyncSnapshot<List<LottoData>> snapshot) {
+          if (snapshot.hasData) {
+            return SliverList(
+                delegate: SliverChildBuilderDelegate((context, index) {
+                  var item = snapshot.data[index];
+                  return Row(
+                    children: [
+                      LottoNumberSet(
+                        lottoNumbers: [
+                          item.lottoNumber1,
+                          item.lottoNumber2,
+                          item.lottoNumber3,
+                          item.lottoNumber4,
+                          item.lottoNumber5,
+                          item.lottoNumber6
+                        ],
+                      ),
+                      RaisedButton(child: Icon(Icons.delete),onPressed: () {
+                        DBHelper.deleteLotto(item.id);
+                        allLottoData = getAllLottoData();
+                        print(allLottoData);
+                      }, )
+                    ],
+                  );
+                }, childCount: snapshot.data.length));
+          } else {
+            return SliverToBoxAdapter(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
+        },
+      ),
     );
   }
 }

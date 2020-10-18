@@ -65,7 +65,10 @@ class _MyLottoScreenState extends State<MyLottoScreen> {
                     ),
                     RaisedButton(child: Icon(Icons.delete),onPressed: () {
                       DBHelper.deleteLotto(item.id);
-                      allLottoData = getAllLottoData();
+                      setState(() {
+                        allLottoData = getAllLottoData();
+                      });
+
                       print(allLottoData);
                     }, )
                   ],

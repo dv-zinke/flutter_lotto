@@ -5,24 +5,40 @@ import 'package:lotto_flutter/model/LottoData.dart';
 import 'package:lotto_flutter/widgets/lotto_number_set.dart';
 
 class MyLottoScreen extends StatefulWidget {
+
+
   @override
   _MyLottoScreenState createState() => _MyLottoScreenState();
+
+  setAllLottoData() => createState().setAllLottoData();
 }
 
 class _MyLottoScreenState extends State<MyLottoScreen> {
 
   @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    print("AB");
+    super.didChangeDependencies();
+  }
+
+  @override
   void initState() {
-    // TODO: implement initState
     allLottoData = getAllLottoData();
     super.initState();
   }
 
   Future<List<LottoData>> allLottoData;
 
+  void setAllLottoData() {
+
+  }
+
+
+
+
 
   Future<List<LottoData>> getAllLottoData() {
-    print("A");
     return DBHelper.getLottoDates();
   }
   @override

@@ -31,12 +31,13 @@ class _NavScreenState extends State<NavScreen> {
 
   int _selectedIndex = 0;
 
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: _screens.length,
       child: Scaffold(
-        body:IndexedStack(
+        body: IndexedStack(
           index: _selectedIndex,
           children: _screens,
         ),
@@ -46,7 +47,12 @@ class _NavScreenState extends State<NavScreen> {
               icons: _icons,
               menus: _menus,
               selectedIndex: _selectedIndex,
-              onTap: (index) => setState(() => _selectedIndex = index)),
+              onTap: (index)  {
+              setState(() => _selectedIndex = index);
+              if(index == 2) {
+                MyLottoScreen().setAllLottoData();
+              }
+          }),
         ),
       ),
     );
